@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Public Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-page: #f5f4f1;
+  --color-surface: #ffffff;
+  --color-field: #fbfaf7;
+  --color-line: #e7e5dc;
+  --color-line-strong: #e1ded4;
+
+  --color-ink: #201f1b;
+
+  --color-muted: #6b6656;
+  
+  --color-faint: #9a968a;
+  --color-bar: #a9a69c;
+
+  --color-accent: #3a3f5c;
+  --color-accent-soft: #edeff8;
+  --color-accent-track: #d6d9ea;
+
+  --color-chip: #efeef5;
+  --color-chip-ink: #4b4f6b;
+
+  --color-danger: #b15642;
+  --color-danger-soft: #f7e2dc;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-page font-sans text-ink antialiased;
+  }
+
+  
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sheet-enter {
+    animation: sheet-up 180ms ease-out;
+  }
+}

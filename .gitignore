@@ -13,6 +13,9 @@ dist/
 build/
 scripts/
 
+# generated SQLite database (created by `yarn seed`)
+server/data/
+
 # misc
 .DS_Store
 .env

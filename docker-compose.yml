@@ -1,0 +1,29 @@
+
+name: user-directory
+
+services:
+  server:
+    build:
+      context: .
+      target: server
+    environment:
+      PORT: "4000"
+      DB_PATH: /data/directory.db
+    volumes:
+      - db-data:/data
+    restart: unless-stopped
+
+  client:
+    build:
+      context: .
+      target: client
+    ports:
+      # Change the left-hand port if 8080 is taken: CLIENT_PORT=9000 docker compose up
+      - "${CLIENT_PORT:-8080}:80"
+    depends_on:
+      server:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  db-data:
